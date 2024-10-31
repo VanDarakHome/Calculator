@@ -96,6 +96,40 @@ def number_analyzator(number):
     return final_analyze
 
 
+def trigonometry(mode, operation, putin):
+    def radians_to_degrees(radians):
+        return math.degrees(radians)
+
+    def degrees_to_radians(degrees):
+        return math.radians(degrees)
+
+    if mode == 'degrees':
+        putin = degrees_to_radians(putin)
+
+    if operation == 'sin':
+        result = math.sin(putin)
+    elif operation == 'cos':
+        result = math.cos(putin)
+    elif operation == 'tan':
+        result = math.tan(putin)
+    elif operation == 'asin':
+        result = math.asin(putin)
+        if mode == 'degrees':
+            result = radians_to_degrees(result)
+    elif operation == 'acos':
+        result = math.acos(putin)
+        if mode == 'degrees':
+            result = radians_to_degrees(result)
+    elif operation == 'atan':
+        result = math.atan(putin)
+        if mode == 'degrees':
+            result = radians_to_degrees(result)
+    else:
+        raise ValueError("Неверная операция")
+
+    return round(result, 15)
+
+
 def main():
     print('Привет. Это калькулятор.')
     time.sleep(0.5)
@@ -122,12 +156,14 @@ def main():
     print('9. Перевод из любой системы счисления в десятичную (systems)')
     time.sleep(0.08)
     print('10. Анализ числа (analyze)')
+    time.sleep(0.08)
+    print('11) Тригонометрические функции (trigon)')
     time.sleep(1)
 
     while True:
         try:
             goida = input("Введите операцию которую хотите воспроизвести:"
-                          "+, -, *, /, //, %, **, sqr, systems, analyze").strip().lower()
+                          "+, -, *, /, //, %, **, sqr, systems, analyze, trigon").strip().lower()
             if goida in ["+", "-", "*", "/", "//", "%", "**"]:
                 zov = float(input('Введите первое число: '))
                 svo = float(input('Введите второе число: '))
@@ -161,6 +197,50 @@ def main():
                 print("Анализ числа:")
                 for key, value in final_analyze.items():
                     print(f"{key}: {value}")
+            elif goida == 'trigon':
+                print('Доступные тригонометрические функции:')
+                time.sleep(0.8)
+                print('1) Sinus (sin)')
+                time.sleep(0.08)
+                print('2) Cosinus (cos)')
+                time.sleep(0.08)
+                print('3) Tangens (tan)')
+                time.sleep(0.08)
+                print('4) ArcSinus (asin)')
+                time.sleep(0.08)
+                print('5) ArcCosinus (acos)')
+                time.sleep(0.08)
+                print('6) ArcTangens (atan)')
+                time.sleep(1)
+                while True:
+                    mode = input('Выберите режим подсчёта: radians/degrees')
+                    if mode not in ['radians', 'degrees']:
+                        print("Неверный режим. Попробуйте снова.")
+                        continue
+                    time.sleep(0.5)
+                    operation = input("Введите операцию: ").strip().lower()
+                    if operation not in ['sin', 'cos', 'tan', 'asin', 'acos', 'atan']:
+                        print("Неверная операция. Попробуйте снова.")
+                        continue
+                    try:
+                        putin = float(input(f"Введите число ({mode}): "))
+                    except ValueError:
+                        print("Неверный ввод. Пожалуйста, введите число.")
+                        continue
+                    if operation == 'sin':
+                        result = trigonometry(mode, operation, putin)
+                    elif operation == 'cos':
+                        result = trigonometry(mode, operation, putin)
+                    elif operation == 'tan':
+                        result = trigonometry(mode, operation, putin)
+                    elif operation == 'asin':
+                        result = trigonometry(mode, operation, putin)
+                    elif operation == 'acos':
+                        result = trigonometry(mode, operation, putin)
+                    elif operation == 'atan':
+                        result = trigonometry(mode, operation, putin)
+                    print(f"Результат: {result}")
+                    break
             else:
                 print('Данные введены некорректно')
         except ValueError:
