@@ -112,18 +112,8 @@ def trigonometry(mode, operation, putin):
         result = math.cos(putin)
     elif operation == 'tan':
         result = math.tan(putin)
-    elif operation == 'asin':
-        result = math.asin(putin)
-        if mode == 'degrees':
-            result = radians_to_degrees(result)
-    elif operation == 'acos':
-        result = math.acos(putin)
-        if mode == 'degrees':
-            result = radians_to_degrees(result)
-    elif operation == 'atan':
-        result = math.atan(putin)
-        if mode == 'degrees':
-            result = radians_to_degrees(result)
+    elif operation == 'ctan':
+        result = 1 / math.tan(putin)
     else:
         raise ValueError("Неверная операция")
 
@@ -176,16 +166,16 @@ def main():
                     "3) Умножение: вводится число a, затем число b, после выводится произведение a * b.",
                     "4) Деление: вводится число a, затем число b, после выводится частное a / b.",
                     "5) Целочисленное деление: вводится число a, затем число b, после выводится"
-                    "целая часть от деления a // b.",
+                    " целая часть от деления a // b.",
                     "6) Взятие остатка: вводится число a, затем число b, после выводится остаток от деления a % b.",
                     "7) Возведение в степень: вводится число a, затем число b, после выводится результат a ** b.",
                     "8) Квадратный корень: вводится число a, после выводится квадратный корень из a.",
                     "9) Перевод из любой системы счисления в десятичную: вводится число a и его основание"
-                    "системы счисления, после выводится число в десятичной системе.",
+                    " системы счисления, после выводится число в десятичной системе.",
                     "10) Анализ числа: вводится число a, после выводится анализ числа, включая количество разрядов,"
-                    "частоту цифр, четность, сумму цифр, простоту, делители, полный квадрат и полный куб.",
+                    " частоту цифр, четность, сумму цифр, простоту, делители, полный квадрат и полный куб.",
                     "11) Тригонометрические функции: выбирается режим (radians/degrees),"
-                    "затем операция (sin, cos, tan, asin, acos, atan) и число, после выводится результат."
+                    "затем операция (sin, cos, tan, ctan) и число, после выводится результат."
                 ]
                 slow_print(help_text)
                 continue
@@ -229,9 +219,7 @@ def main():
                     '1) Sinus (sin)',
                     '2) Cosinus (cos)',
                     '3) Tangens (tan)',
-                    '4) ArcSinus (asin)',
-                    '5) ArcCosinus (acos)',
-                    '6) ArcTangens (atan)'
+                    '4) Cotangence (ctan)'
                 ]
                 slow_print(trigon_text)
                 while True:
@@ -241,7 +229,7 @@ def main():
                         continue
                     time.sleep(0.5)
                     operation = input("Введите операцию: ").strip().lower()
-                    if operation not in ['sin', 'cos', 'tan', 'asin', 'acos', 'atan']:
+                    if operation not in ['sin', 'cos', 'tan', 'ctan']:
                         print("Неверная операция. Попробуйте снова.")
                         continue
                     try:
@@ -255,11 +243,7 @@ def main():
                         result = trigonometry(mode, operation, putin)
                     elif operation == 'tan':
                         result = trigonometry(mode, operation, putin)
-                    elif operation == 'asin':
-                        result = trigonometry(mode, operation, putin)
-                    elif operation == 'acos':
-                        result = trigonometry(mode, operation, putin)
-                    elif operation == 'atan':
+                    elif operation == 'ctan':
                         result = trigonometry(mode, operation, putin)
                     print(f"Результат: {result}")
                     break
