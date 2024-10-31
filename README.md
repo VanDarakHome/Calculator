@@ -1,4 +1,4 @@
-This programm has 11 options to use. While you using it, programm will explain how to use it.
+This programm has 11 operations. In use the programm will provide you a quick guide.
 I hope you enjoy this calculator!
 List of available operations:
 1) Addition
@@ -19,5 +19,5 @@ List of available operations:
     11.5) ArcCosinus
     11.6) ArcTangens
 
-Maybe I will add any other function next time.
-A detailed guide on how to use the calculator is in this video: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+The list of available operations will be extended in time.
+A detailed guide to calculator is below: https://www.youtube.com/watch?v=dQw4w9WgXcQ
