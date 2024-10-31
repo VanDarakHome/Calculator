@@ -15,9 +15,7 @@ List of available operations:
     11.1) Sinus
     11.2) Cosinus
     11.3) Tangens
-    11.4) ArcSinus
-    11.5) ArcCosinus
-    11.6) ArcTangens
+    11.4) Cotangence
 
 The list of available operations will be extended in time.
 A detailed guide to calculator is below: https://www.youtube.com/watch?v=dQw4w9WgXcQ
