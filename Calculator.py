@@ -130,40 +130,66 @@ def trigonometry(mode, operation, putin):
     return round(result, 15)
 
 
+def slow_print(text, char_delay=0.008, line_delay=0.85):
+    for line in text:
+        for char in line:
+            print(char, end='', flush=True)
+            time.sleep(char_delay)
+        print()
+        time.sleep(line_delay)
+
+
 def main():
-    print('Привет. Это калькулятор.')
-    time.sleep(0.5)
-    print('Он умеет выполнять различные операции и анализы чисел.')
-    time.sleep(0.5)
-    print('Список операций, которые есть в калькуляторе:')
-    time.sleep(1.2)
-    print('1. Сложение (+)')
-    time.sleep(0.08)
-    print('2. Вычитание (-)')
-    time.sleep(0.08)
-    print('3. Умножение (*)')
-    time.sleep(0.08)
-    print('4. Деление (/)')
-    time.sleep(0.08)
-    print('5. Целочисленное деление (//)')
-    time.sleep(0.08)
-    print('6. Взятие остатка (%)')
-    time.sleep(0.08)
-    print('7. Возведение в степень (**)')
-    time.sleep(0.08)
-    print('8. Квадратный корень (sqr)')
-    time.sleep(0.08)
-    print('9. Перевод из любой системы счисления в десятичную (systems)')
-    time.sleep(0.08)
-    print('10. Анализ числа (analyze)')
-    time.sleep(0.08)
-    print('11) Тригонометрические функции (trigon)')
-    time.sleep(1)
+    intro_text = [
+        'Привет. Это калькулятор.',
+        'Он умеет выполнять различные операции и анализы чисел.',
+        'Список операций, которые есть в калькуляторе:',
+        '1. Сложение (+)',
+        '2. Вычитание (-)',
+        '3. Умножение (*)',
+        '4. Деление (/)',
+        '5. Целочисленное деление (//)',
+        '6. Взятие остатка (%)',
+        '7. Возведение в степень (**)',
+        '8. Квадратный корень (sqr)',
+        '9. Перевод из любой системы счисления в десятичную (systems)',
+        '10. Анализ числа (analyze)',
+        '11) Тригонометрические функции (trigon)'
+    ]
+
+    slow_print(intro_text)
 
     while True:
         try:
-            goida = input("Введите операцию которую хотите воспроизвести:"
-                          "+, -, *, /, //, %, **, sqr, systems, analyze, trigon").strip().lower()
+            operation_prompt = [
+                "Введите операцию которую хотите воспроизвести:"
+                "+, -, *, /, //, %, **, sqr, systems, analyze, trigon, !help"
+            ]
+            slow_print(operation_prompt)
+            goida = input().strip().lower()
+            
+            if goida == '!help':
+                help_text = [
+                    "Помощь по использованию калькулятора:",
+                    "1) Сложение: вводится число a, затем число b, после выводится сумма a + b.",
+                    "2) Вычитание: вводится число a, затем число b, после выводится разность a - b.",
+                    "3) Умножение: вводится число a, затем число b, после выводится произведение a * b.",
+                    "4) Деление: вводится число a, затем число b, после выводится частное a / b.",
+                    "5) Целочисленное деление: вводится число a, затем число b, после выводится"
+                    "целая часть от деления a // b.",
+                    "6) Взятие остатка: вводится число a, затем число b, после выводится остаток от деления a % b.",
+                    "7) Возведение в степень: вводится число a, затем число b, после выводится результат a ** b.",
+                    "8) Квадратный корень: вводится число a, после выводится квадратный корень из a.",
+                    "9) Перевод из любой системы счисления в десятичную: вводится число a и его основание"
+                    "системы счисления, после выводится число в десятичной системе.",
+                    "10) Анализ числа: вводится число a, после выводится анализ числа, включая количество разрядов,"
+                    "частоту цифр, четность, сумму цифр, простоту, делители, полный квадрат и полный куб.",
+                    "11) Тригонометрические функции: выбирается режим (radians/degrees),"
+                    "затем операция (sin, cos, tan, asin, acos, atan) и число, после выводится результат."
+                ]
+                slow_print(help_text)
+                continue
+
             if goida in ["+", "-", "*", "/", "//", "%", "**"]:
                 zov = float(input('Введите первое число: '))
                 svo = float(input('Введите второе число: '))
@@ -198,20 +224,16 @@ def main():
                 for key, value in final_analyze.items():
                     print(f"{key}: {value}")
             elif goida == 'trigon':
-                print('Доступные тригонометрические функции:')
-                time.sleep(0.8)
-                print('1) Sinus (sin)')
-                time.sleep(0.08)
-                print('2) Cosinus (cos)')
-                time.sleep(0.08)
-                print('3) Tangens (tan)')
-                time.sleep(0.08)
-                print('4) ArcSinus (asin)')
-                time.sleep(0.08)
-                print('5) ArcCosinus (acos)')
-                time.sleep(0.08)
-                print('6) ArcTangens (atan)')
-                time.sleep(1)
+                trigon_text = [
+                    'Доступные тригонометрические функции:',
+                    '1) Sinus (sin)',
+                    '2) Cosinus (cos)',
+                    '3) Tangens (tan)',
+                    '4) ArcSinus (asin)',
+                    '5) ArcCosinus (acos)',
+                    '6) ArcTangens (atan)'
+                ]
+                slow_print(trigon_text)
                 while True:
                     mode = input('Выберите режим подсчёта: radians/degrees')
                     if mode not in ['radians', 'degrees']:
@@ -244,9 +266,12 @@ def main():
             else:
                 print('Данные введены некорректно')
         except ValueError:
-            print('Ошибка при выполнении программы! Данные введены неверно!')
+            error_text = ["Ошибка при выполнении программы! Данные введены неверно!"]
+            slow_print(error_text)
 
-        repeator = input('Хотите воспользоваться калькулятором снова? Если да напишите "да": ').strip().lower()
+        repeator = ["Хотите воспользоваться калькулятором снова? Если да напишите 'да':"]
+        slow_print(repeator)
+        repeator = input().strip().lower()
         if repeator != 'да':
             print('До свидания!')
             break
