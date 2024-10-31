@@ -21,3 +21,5 @@ List of available operations:
 
 The list of available operations will be extended in time.
 A detailed guide to calculator is below: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+If you are too lazy to watch guide write !help
+This command will explain you everything.
