@@ -253,10 +253,10 @@ def main():
             error_text = ["Ошибка при выполнении программы! Данные введены неверно!"]
             slow_print(error_text)
 
-        repeator = ["Хотите воспользоваться калькулятором снова? Если да напишите 'да':"]
+        repeator = ["Хотите воспользоваться калькулятором снова? Если да напишите 'yes':"]
         slow_print(repeator)
         repeator = input().strip().lower()
-        if repeator != 'да':
+        if repeator != 'yes':
             print('До свидания!')
             break
 
